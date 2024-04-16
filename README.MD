@@ -10,6 +10,5 @@ Rebuild to use Unix Unrestricted ExecutionPolicy
 
 ```
 vagrant up
-vagrant provision
 vagrant ssh -- pwsh c:/vagrant/build.ps1
 ```
