@@ -1,7 +1,7 @@
-# Write-Host "Get PowerShell sources for version 7.4.1"
+# Write-Host "Get PowerShell sources for version 7.4.2"
 git clone https://github.com/PowerShell/PowerShell.git
 Set-Location PowerShell
-git checkout v7.4.1
+git checkout v7.4.2
 git reset
 git clean -xdf
 
@@ -19,4 +19,4 @@ Write-Host "Compile PowerShell"
 # https://github.com/PowerShell/PowerShell/blob/master/docs/building/windows-core.md
 Import-Module ./build.psm1
 Start-PSBuild
-Compress-Archive -Path src/powershell-win-core/bin/Debug/net8.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoExecPolicy-7.4.1-win-x64.zip -Force
+Compress-Archive -Path src/powershell-win-core/bin/Debug/net8.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoExecPolicy-7.4.2-win-x64.zip -Force
