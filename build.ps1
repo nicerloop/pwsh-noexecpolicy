@@ -13,7 +13,7 @@ if (!(Test-Path $oldFile)) {
 } else {
     Remove-Item $secFile
 }
-Get-Content $oldFile | ForEach-Object { $_ -replace "#if UNIX", "#if !UNIX" } | Set-Content $secFile
+Get-Content $oldFile | ForEach-Object { $_ -replace "#if UNIX", "#if !UNIX" -replace "throw new PlatformNotSupportedException", "// throw new PlatformNotSupportedException" } | Set-Content $secFile
 
 Write-Host "Compile PowerShell"
 # https://github.com/PowerShell/PowerShell/blob/master/docs/building/windows-core.md
