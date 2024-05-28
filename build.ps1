@@ -1,11 +1,11 @@
-# Write-Host "Get PowerShell sources for version 7.4.2"
+Write-Host "Get PowerShell sources for version 7.4.2"
 git clone https://github.com/PowerShell/PowerShell.git
 Set-Location PowerShell
 git checkout v7.4.2
 git reset
 git clean -xdf
 
-# Write-Host "Disable ExecutionPolicy"
+Write-Host "Disable ExecutionPolicy"
 $secFile="src/System.Management.Automation/security/SecuritySupport.cs"
 $oldFile="$secFile.orig"
 if (!(Test-Path $oldFile)) {
