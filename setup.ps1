@@ -18,6 +18,3 @@ scoop install main/pwsh
 
 Write-Host "Install git"
 scoop install main/git
-
-Write-Host "Install .Net SDK"
-scoop install main/dotnet-sdk@8.0.204
