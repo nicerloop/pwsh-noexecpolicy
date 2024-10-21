@@ -16,6 +16,9 @@ if (!(Test-Path $oldFile)) {
 }
 Get-Content $oldFile | ForEach-Object { $_ -replace "#if UNIX", "#if !UNIX" -replace "throw new PlatformNotSupportedException", "// throw new PlatformNotSupportedException" } | Set-Content $secFile
 
+Write-Host "Disable NuGet Audit to reproduce build"
+git apply C:/vagrant/DisableNuGetAudit.patch
+
 Write-Host "Compile PowerShell"
 # https://github.com/PowerShell/PowerShell/blob/master/docs/building/windows-core.md
 Import-Module ./build.psm1

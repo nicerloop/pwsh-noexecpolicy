@@ -1,0 +1,22 @@
+diff --git a/build.psm1 b/build.psm1
+index 5316bf19f..61cc202b7 100644
+--- a/build.psm1
++++ b/build.psm1
+@@ -559,6 +559,8 @@ Fix steps:
+ 
+             $Arguments += "/property:SDKToUse=$sdkToUse"
+ 
++            $Arguments += "/property:NuGetAudit=False"
++
+             Write-Log -message "Run dotnet $Arguments from $PWD"
+             Start-NativeExecution { dotnet $Arguments }
+             Write-Log -message "PowerShell output: $($Options.Output)"
+@@ -821,6 +823,8 @@ function Restore-PSPackage
+             $RestoreArguments += "--interactive"
+         }
+ 
++        $RestoreArguments += "/property:NuGetAudit=False"
++
+         $ProjectDirs | ForEach-Object {
+             $project = $_
+             Write-Log -message "Run dotnet restore $project $RestoreArguments"
