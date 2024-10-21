@@ -24,4 +24,6 @@ Write-Host "Compile PowerShell"
 Import-Module ./build.psm1
 Install-Dotnet
 Start-PSBuild -ReleaseTag v$PowerShellVersion -ForMinimalSize
+
+Write-Host "Archive PowerShell"
 Compress-Archive -Path src/powershell-win-core/bin/Debug/net8.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoExecPolicy-$PowerShellVersion-win-x64.zip -Force
