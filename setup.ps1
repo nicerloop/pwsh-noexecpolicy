@@ -18,3 +18,7 @@ scoop install main/pwsh
 
 Write-Host "Install git"
 scoop install main/git
+
+Write-Host "Install Visual Studio Code"
+scoop bucket add extras
+scoop install extras/vscode
