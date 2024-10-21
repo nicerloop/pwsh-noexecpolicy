@@ -6,15 +6,8 @@ git checkout v$PowerShellVersion
 git reset
 git clean -xdf
 
-Write-Host "Disable ExecutionPolicy"
-$secFile="src/System.Management.Automation/security/SecuritySupport.cs"
-$oldFile="$secFile.orig"
-if (!(Test-Path $oldFile)) {
-    Move-Item $secFile $oldFile
-} else {
-    Remove-Item $secFile
-}
-Get-Content $oldFile | ForEach-Object { $_ -replace "#if UNIX", "#if !UNIX" -replace "throw new PlatformNotSupportedException", "// throw new PlatformNotSupportedException" } | Set-Content $secFile
+Write-Host "Ignore GPO Execution Policy scopes"
+git apply C:/vagrant/IgnoreGpoExecutionPolicyScope.patch
 
 Write-Host "Disable NuGet Audit to reproduce build"
 git apply C:/vagrant/DisableNuGetAudit.patch
@@ -26,4 +19,4 @@ Install-Dotnet
 Start-PSBuild -ReleaseTag v$PowerShellVersion -ForMinimalSize
 
 Write-Host "Archive PowerShell"
-Compress-Archive -Path src/powershell-win-core/bin/Debug/net8.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoExecPolicy-$PowerShellVersion-win-x64.zip -Force
+Compress-Archive -Path src/powershell-win-core/bin/Debug/net8.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoGpoExecPolicy-$PowerShellVersion-win-x64.zip -Force

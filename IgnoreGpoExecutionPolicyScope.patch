@@ -1,0 +1,15 @@
+diff --git a/src/System.Management.Automation/security/SecuritySupport.cs b/src/System.Management.Automation/security/SecuritySupport.cs
+index 2089c2217..c619866f5 100644
+--- a/src/System.Management.Automation/security/SecuritySupport.cs
++++ b/src/System.Management.Automation/security/SecuritySupport.cs
+@@ -124,8 +124,8 @@ namespace System.Management.Automation.Internal
+             get
+             {
+                 return new ExecutionPolicyScope[] {
+-                        ExecutionPolicyScope.MachinePolicy,
+-                        ExecutionPolicyScope.UserPolicy,
++//                        ExecutionPolicyScope.MachinePolicy,
++//                        ExecutionPolicyScope.UserPolicy,
+                         ExecutionPolicyScope.Process,
+                         ExecutionPolicyScope.CurrentUser,
+                         ExecutionPolicyScope.LocalMachine
