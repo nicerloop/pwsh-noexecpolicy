@@ -1,4 +1,4 @@
-$PowerShellVersion="7.4.5"
+$PowerShellVersion="7.4.6"
 Write-Host "Get PowerShell sources for version $PowerShellVersion"
 git clone https://github.com/PowerShell/PowerShell.git
 Set-Location PowerShell
