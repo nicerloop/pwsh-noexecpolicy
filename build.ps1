@@ -2,12 +2,17 @@ $PowerShellVersion="7.4.6"
 Write-Host "Get PowerShell sources for version $PowerShellVersion"
 git clone https://github.com/PowerShell/PowerShell.git
 Set-Location PowerShell
+git config advice.detachedHead false
 git checkout v$PowerShellVersion
 git reset
+git restore .
 git clean -xdf
 
 Write-Host "Ignore GPO Execution Policy scopes"
 git apply C:/vagrant/IgnoreGpoExecutionPolicyScope.patch
+
+Write-Host "Ignore Windows LockDown Policy application white listing"
+git apply C:/vagrant/IgnoreWldp.patch
 
 Write-Host "Disable NuGet Audit to reproduce build"
 git apply C:/vagrant/DisableNuGetAudit.patch

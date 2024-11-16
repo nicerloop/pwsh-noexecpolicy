@@ -1,0 +1,45 @@
+diff --git a/src/System.Management.Automation/security/wldpNativeMethods.cs b/src/System.Management.Automation/security/wldpNativeMethods.cs
+index a59f37c0a..ac5b99f93 100644
+--- a/src/System.Management.Automation/security/wldpNativeMethods.cs
++++ b/src/System.Management.Automation/security/wldpNativeMethods.cs
+@@ -105,7 +105,8 @@ namespace System.Management.Automation.Security
+                 }
+             }
+ 
+-            PSEtwLog.LogWDACAuditEvent(title, messageToWrite, fqid);
++            // No audit logging
++            // PSEtwLog.LogWDACAuditEvent(title, messageToWrite, fqid);
+ 
+             // We drop into the debugger only if requested and we are running in the interactive host session runspace (Id == 1).
+             if (debuggerAvailable && dropIntoDebugger &&
+@@ -156,7 +157,8 @@ namespace System.Management.Automation.Security
+         }
+ 
+         private static readonly object s_systemLockdownPolicyLock = new object();
+-        private static SystemEnforcementMode? s_systemLockdownPolicy = null;
++        // Define system lockdown policy
++        private static SystemEnforcementMode? s_systemLockdownPolicy = SystemEnforcementMode.None;
+         private static bool s_allowDebugOverridePolicy = false;
+         private static bool s_wldpCanExecuteAvailable = true;
+ 
+@@ -589,7 +591,8 @@ namespace System.Management.Automation.Security
+             return SystemEnforcementMode.None;
+         }
+ 
+-        private static bool s_hadMissingWldpAssembly = false;
++        // Mark WLDP assembly missing to disable WLDP checks
++        private static bool s_hadMissingWldpAssembly = true;
+ 
+         /// <summary>
+         /// Gets lockdown policy as applied to a COM object.
+@@ -600,8 +603,8 @@ namespace System.Management.Automation.Security
+             // This method is called only if there is an AppLocker and/or WLDP system wide lock down enforcement policy.
+             if (s_cachedWldpSystemPolicy.GetValueOrDefault(SystemEnforcementMode.None) != SystemEnforcementMode.Enforce)
+             {
+-                // No WLDP policy implies only AppLocker policy enforcement. Disallow all COM object instantiation.
+-                return false;
++                // Allow all COM object instantiation
++                return true;
+             }
+ 
+             // WLDP policy must be in system wide enforcement, look up COM Id in WLDP approval list.
