@@ -1,0 +1,13 @@
+diff --git a/src/System.Management.Automation/security/SecuritySupport.cs b/src/System.Management.Automation/security/SecuritySupport.cs
+index 2089c2217..74753cab0 100644
+--- a/src/System.Management.Automation/security/SecuritySupport.cs
++++ b/src/System.Management.Automation/security/SecuritySupport.cs
+@@ -488,7 +488,7 @@ namespace System.Management.Automation.Internal
+ 
+         #endregion execution policy
+ 
+-        private static bool _saferIdentifyLevelApiSupported = true;
++        private static bool _saferIdentifyLevelApiSupported = false;
+ 
+         /// <summary>
+         /// Get the pass / fail result of calling the SAFER API.

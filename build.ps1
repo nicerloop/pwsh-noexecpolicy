@@ -14,6 +14,9 @@ git apply C:/vagrant/IgnoreGpoExecutionPolicyScope.patch
 Write-Host "Ignore Windows LockDown Policy application white listing"
 git apply C:/vagrant/IgnoreWldp.patch
 
+Write-Host "Ignore Windows Software Restriction Policies API"
+git apply C:/vagrant/IgnoreSafer.patch
+
 Write-Host "Disable NuGet Audit to reproduce build"
 git apply C:/vagrant/DisableNuGetAudit.patch
 
