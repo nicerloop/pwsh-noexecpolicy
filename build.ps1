@@ -1,4 +1,4 @@
-$PowerShellVersion="7.4.6"
+$PowerShellVersion="7.4.7"
 Write-Host "Get PowerShell sources for version $PowerShellVersion"
 git clone https://github.com/PowerShell/PowerShell.git
 Set-Location PowerShell
@@ -16,9 +16,6 @@ git apply C:/vagrant/IgnoreWldp.patch
 
 Write-Host "Ignore Windows Software Restriction Policies API"
 git apply C:/vagrant/IgnoreSafer.patch
-
-Write-Host "Disable NuGet Audit to reproduce build"
-git apply C:/vagrant/DisableNuGetAudit.patch
 
 Write-Host "Compile PowerShell"
 # https://github.com/PowerShell/PowerShell/blob/master/docs/building/windows-core.md
