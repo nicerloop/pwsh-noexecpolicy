@@ -1,4 +1,4 @@
-$PowerShellVersion="7.4.7"
+$PowerShellVersion="7.5.0"
 Write-Host "Get PowerShell sources for version $PowerShellVersion"
 git clone https://github.com/PowerShell/PowerShell.git
 Set-Location PowerShell
@@ -24,4 +24,4 @@ Install-Dotnet
 Start-PSBuild -ReleaseTag v$PowerShellVersion -ForMinimalSize
 
 Write-Host "Archive PowerShell"
-Compress-Archive -Path src/powershell-win-core/bin/Debug/net8.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoGpoExecPolicy-$PowerShellVersion-win-x64.zip -Force
+Compress-Archive -Path src/powershell-win-core/bin/Debug/net9.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoGpoExecPolicy-$PowerShellVersion-win-x64.zip -Force
