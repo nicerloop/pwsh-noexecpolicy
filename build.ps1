@@ -21,7 +21,7 @@ Write-Host "Compile PowerShell"
 # https://github.com/PowerShell/PowerShell/blob/master/docs/building/windows-core.md
 Import-Module ./build.psm1
 Install-Dotnet
-Start-PSBuild -ReleaseTag v$PowerShellVersion -ForMinimalSize
+Start-PSBuild -Clean -PSModuleRestore -UseNuGetOrg -ReleaseTag v$PowerShellVersion -ForMinimalSize -Configuration Release
 
 Write-Host "Archive PowerShell"
-Compress-Archive -Path src/powershell-win-core/bin/Debug/net9.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoGpoExecPolicy-$PowerShellVersion-win-x64.zip -Force
+Compress-Archive -Path src/powershell-win-core/bin/Release/net9.0/win7-x64/publish/* -DestinationPath C:/vagrant/PowerShell-NoGpoExecPolicy-$PowerShellVersion-win-x64.zip -Force
