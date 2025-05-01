@@ -1,8 +1,8 @@
 diff --git a/src/System.Management.Automation/security/wldpNativeMethods.cs b/src/System.Management.Automation/security/wldpNativeMethods.cs
-index a59f37c0a..ac5b99f93 100644
+index ab49f9276..34d28a09d 100644
 --- a/src/System.Management.Automation/security/wldpNativeMethods.cs
 +++ b/src/System.Management.Automation/security/wldpNativeMethods.cs
-@@ -105,7 +105,7 @@ namespace System.Management.Automation.Security
+@@ -106,7 +106,7 @@ namespace System.Management.Automation.Security
                  }
              }
  
@@ -11,7 +11,7 @@ index a59f37c0a..ac5b99f93 100644
  
              // We drop into the debugger only if requested and we are running in the interactive host session runspace (Id == 1).
              if (debuggerAvailable && dropIntoDebugger &&
-@@ -156,7 +156,7 @@ namespace System.Management.Automation.Security
+@@ -157,7 +157,7 @@ namespace System.Management.Automation.Security
          }
  
          private static readonly object s_systemLockdownPolicyLock = new object();
@@ -20,7 +20,7 @@ index a59f37c0a..ac5b99f93 100644
          private static bool s_allowDebugOverridePolicy = false;
          private static bool s_wldpCanExecuteAvailable = true;
  
-@@ -589,7 +589,7 @@ namespace System.Management.Automation.Security
+@@ -620,7 +620,7 @@ namespace System.Management.Automation.Security
              return SystemEnforcementMode.None;
          }
  
@@ -29,7 +29,7 @@ index a59f37c0a..ac5b99f93 100644
  
          /// <summary>
          /// Gets lockdown policy as applied to a COM object.
-@@ -600,8 +600,8 @@ namespace System.Management.Automation.Security
+@@ -631,8 +631,8 @@ namespace System.Management.Automation.Security
              // This method is called only if there is an AppLocker and/or WLDP system wide lock down enforcement policy.
              if (s_cachedWldpSystemPolicy.GetValueOrDefault(SystemEnforcementMode.None) != SystemEnforcementMode.Enforce)
              {
